@@ -1,0 +1,26 @@
+.card{
+    width: 600px;
+    height:60vh;
+    max-height: 85vh;
+    background-repeat: no-repeat;
+    /* background-position: center; */
+    background-size: cover;
+    border-radius: 20px;
+    box-shadow: 0.7rem 0.7rem 2rem rgba(0,0,0,0.3);
+}   
+.tc-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 7vh;
+}
+
+.swipe{
+    position: absolute;
+}
+
+.card h3{
+    position: absolute;
+    bottom: 0;
+    padding-left: 27px;
+    color: #fff;
+}

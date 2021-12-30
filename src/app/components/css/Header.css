@@ -1,0 +1,15 @@
+.header-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* background-color: aliceblue; */
+}
+
+.icon{
+    /* width: 100%; */
+}
+
+.logo{
+    object-fit: contain;
+    width: 9%;
+}
