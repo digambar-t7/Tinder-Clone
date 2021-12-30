@@ -1,35 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './css/TinderCards.css';
 import TinderCard from 'react-tinder-card';
+import axios from '../axios';
 
 const TinderCards = () => {
     // storing all people's data in an array
-    const [people, setPeople] = useState([
-        {
-            name: 'Adesanya',
-            url: "https://upload.wikimedia.org/wikipedia/commons/e/e1/Israel_Adesanya_2014.jpg"
-        },
-        {
-            name: 'Rashmika Mandhana',
-            url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/RashmikaMandanna_at_Bheeshma_event.jpg/220px-RashmikaMandanna_at_Bheeshma_event.jpg'
-        },
-        {
-            name: 'Khabib Nurmagomedov',
-            url: 'https://upload.wikimedia.org/wikipedia/commons/7/76/Khabib_nurmagomedov_abdulmanapovich.jpg'
-        },
-        {
-            name: 'Conor Mcgregor',
-            url: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Conor_McGregor.jpg'
-        },
-        {
-            name: 'Deepika Padukone',
-            url: 'https://upload.wikimedia.org/wikipedia/commons/b/b6/Deepika_Padukone_Cannes_2018_%28cropped%29.jpg'
-        },
-        {
-            name: 'Pooja Hegde',
-            url: 'https://upload.wikimedia.org/wikipedia/commons/1/12/Pooja_Hegde_at_the_Bombay_Times_Fashion_Week.jpg'
-        }
-    ])
+    const [people, setPeople] = useState([]);
+
+    const fetchallcards = async () => {
+        const req = await axios.get("/cards/getallcards");
+        console.log(req);
+        setPeople(req.data);
+    }
+
+    useEffect(() => {
+        fetchallcards();
+    }, [])
 
     const swiped = (direction, nameToDelete) => {
         console.log('You swiped: ' + direction)
@@ -55,7 +41,7 @@ const TinderCards = () => {
                     >
                         <div
                             className='card'
-                            style={{ backgroundImage: `url(${person.url})` }}
+                            style={{ backgroundImage: `url(${person.imageUrl})` }}
                         >
                             <h3>{person.name}</h3>
                         </div>
